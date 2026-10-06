@@ -1,0 +1,56 @@
+@model Car
+@{
+    ViewData["Title"] = Model.Make + " " + Model.Model;
+}
+
+<h1 class="display-3 text-center">@Model.Make @Model.Model @Model.Trim</h1>
+<div class="container text-center">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Trim</th>
+        <th>Year</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th>Horsepower</th>
+        <th>Electric?</th>
+        <th>Hybrid?</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Make</td>
+            <td>@Model.Model</td>
+            <td>@Model.Trim</td>
+            <td>@Model.Year</td>
+            <td>@Model.Color</td>
+            <td>@Model.Price</td>
+            <td>@Model.Horsepower</td>
+            <td>
+                @if (Model.IsElectric)
+                {
+                    <span class="badge bg-primary">Yes</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning">No</span>
+                }
+            </td>
+            <td>
+                @if (Model.IsHybrid)
+                {
+                    <span class="badge bg-primary">Yes</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning">No</span>
+                }
+            </td>
+            <td><a asp-controller="Garage" asp-action="Index" class="btn btn-secondary">Back to Cars</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
