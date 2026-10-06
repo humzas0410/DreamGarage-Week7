@@ -1,14 +1,23 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DreamGarage.Models;
+using DreamGarage.Data;
 
 namespace DreamGarage.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly CarContext _context;
+
+    public HomeController(CarContext context)
+    {
+        _context = context;
+    }
+
     public IActionResult Index()
     {
-        return View();
+        var featured = _context.Cars.OrderByDescending(c => c.Horsepower).FirstOrDefault();
+        return View(featured);
     }
 
     public IActionResult Privacy()
