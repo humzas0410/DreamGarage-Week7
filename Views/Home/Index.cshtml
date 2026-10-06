@@ -1,9 +1,8 @@
-﻿@using DreamGarage.Data;
-@inject DreamGarage.Data.CarContext _context // need this to access the database context in the view //
+﻿@model DreamGarage.Models.Car
 
 @{
     ViewData["Title"] = "Home";
-    var featured = _context.Cars.OrderByDescending(c => c.Horsepower).First();
+    var featured = Model;
 }
 <header>
 <div class="text-center">
